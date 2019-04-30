@@ -2,9 +2,9 @@
 -- version 4.6.6deb5
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Apr 26, 2019 at 10:12 AM
--- Server version: 5.7.25-0ubuntu0.18.04.2
+-- Host: localhost:3306
+-- Generation Time: Apr 30, 2019 at 03:15 PM
+-- Server version: 5.7.26-0ubuntu0.18.04.1
 -- PHP Version: 7.2.17-0ubuntu0.18.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -36,15 +36,17 @@ CREATE TABLE `Event` (
   `CustomerIPAddress` varchar(255) NOT NULL,
   `EventType` int(255) NOT NULL,
   `IsDeleted` tinyint(1) NOT NULL,
-  `EventDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `EventDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `GroupId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `Event`
 --
 
-INSERT INTO `Event` (`EventId`, `TrackingId`, `StoreId`, `StoreDomain`, `CustomerIPAddress`, `EventType`, `IsDeleted`, `EventDate`) VALUES
-(2, 1, 32, '4', '52', 1, 1, '2019-04-25 19:40:03');
+INSERT INTO `Event` (`EventId`, `TrackingId`, `StoreId`, `StoreDomain`, `CustomerIPAddress`, `EventType`, `IsDeleted`, `EventDate`, `GroupId`) VALUES
+(2, 1, 32, '4', '52', 1, 1, '2019-04-25 19:40:03', 0),
+(3, 2, 2, 'test', '1112.15.24.2', 1, 1, '2019-04-30 15:07:56', 2);
 
 -- --------------------------------------------------------
 
@@ -97,7 +99,7 @@ ALTER TABLE `EventTypes`
 -- AUTO_INCREMENT for table `Event`
 --
 ALTER TABLE `Event`
-  MODIFY `EventId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `EventId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `EventTypes`
 --

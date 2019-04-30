@@ -7,11 +7,12 @@ var Event = function (event) {
     this.StoreDomain = event.StoreDomain;
     this.CustomerIPAddress = event.CustomerIPAddress;
     this.EventType = event.EventType;
+    this.GroupId = event.GroupId;
     this.IsDeleted = event.IsDeleted | false;
     this.EventDate = new Date();
 };
 exports.getAll = function (result) {
-    var query = "SELECT Event.TrackingId, Event.StoreId, Event.StoreDomain, Event.CustomerIPAddress, Event.EventDate, EventTypes.EventTypeName AS EventName, EventTypes.EventAddedDate FROM Event JOIN EventTypes ON Event.EventType = EventTypes.EventTypeId";
+    var query = "SELECT Event.TrackingId, Event.StoreId, Event.GroupId, Event.StoreDomain, Event.CustomerIPAddress, Event.EventDate, EventTypes.EventTypeName AS EventName, EventTypes.EventAddedDate FROM Event JOIN EventTypes ON Event.EventType = EventTypes.EventTypeId";
     sql.query(query, function (err, res) {
         if (err)
             console.log("Get Event Data : ", err);
